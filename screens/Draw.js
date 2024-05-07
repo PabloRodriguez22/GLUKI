@@ -1,52 +1,55 @@
 import React, { useRef, useState } from 'react';
-import { View, StyleSheet, PanResponder, TouchableOpacity, Text } from 'react-native';
 
 const DrawingPage = () => {
-  const [color, setColor] = useState('black'); // Default color is black
-  const [isDrawing, setIsDrawing] = useState(false); // State to manage whether the mouse is down for drawing
+  const [color, setColor] = useState('black');
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [penThickness, setPenThickness] = useState(4);
+  const [eraserSize, setEraserSize] = useState(10);
   const canvasRef = useRef(null);
 
-  // Function to handle the drawing on canvas
   const draw = (e) => {
-    if (!isDrawing) return; // Only draw if isDrawing is true
+    if (!isDrawing) return;
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
     const bounds = canvas.getBoundingClientRect();
     const x = e.clientX - bounds.left;
     const y = e.clientY - bounds.top;
-
     context.fillStyle = color;
-    context.fillRect(x, y, 4, 4);  // Draw a small rectangle as the brush
+    const size = color === 'white' ? eraserSize : penThickness;
+    context.fillRect(x, y, size, size);
   };
 
-  // Handle mouse down event to start drawing
   const handleMouseDown = (e) => {
-    setIsDrawing(true); // Set isDrawing to true to start drawing
-    draw(e); // Start drawing immediately on mouse down
+    setIsDrawing(true);
+    draw(e);
   };
 
-  // Handle mouse up and mouse out events to stop drawing
   const handleMouseUp = () => {
-    setIsDrawing(false); // Set isDrawing to false to stop drawing
+    setIsDrawing(false);
   };
 
   const handleColorChange = (newColor) => {
-    setColor(newColor); // Change the current drawing color
+    setColor(newColor);
+    if (newColor === 'white') {
+      setPenThickness(eraserSize);
+    } else {
+      setPenThickness(4);
+    }
   };
 
   const handleClear = () => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    context.clearRect(0, 0, canvas.width, canvas.height);
   };
 
   const handleSave = () => {
     const canvas = canvasRef.current;
-    const image = canvas.toDataURL("image/png"); // Create a PNG image URL
-    const link = document.createElement('a'); // Create a link
-    link.download = 'my-drawing.png'; // Set the filename for download
-    link.href = image; // Set the href to the image URL
-    link.click(); // Simulate a click to trigger the download
+    const image = canvas.toDataURL("image/png");
+    const link = document.createElement('a');
+    link.download = 'my-drawing.png';
+    link.href = image;
+    link.click();
   };
 
   return (
@@ -56,31 +59,46 @@ const DrawingPage = () => {
           <img src="Gluki.png" alt="Home" style={{ width: '50px', height: '50px' }} />
         </button>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          {/* <img src="Gluki.png" alt="User Icon" style={{ marginRight: '10px' }} /> */}
           <span>Level: 1 | Score: 1000</span>
         </div>
       </div>
       <h1 style={{
-        backgroundColor: '#FFC107', // Change to match your color theme
-        color: 'black', // Text color
-        width: '250px', // Same width as the canvas
+        backgroundColor: '#FFC107',
+        color: 'black', 
+        width: '90%', 
         textAlign: 'center',
         padding: '10px 20px',
-        borderRadius: '20px', // Adjust for desired oval shape
-        margin: '20px auto', // Centers the title
-        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' // Optional shadow for depth
+        borderRadius: '20px', 
+        margin: '20px auto', 
+        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' 
       }}>Express your creativity about T1D</h1>
       <canvas ref={canvasRef} width={window.innerWidth - 20} height={window.innerHeight / 2}
         onMouseDown={handleMouseDown} onMouseMove={draw} onMouseUp={handleMouseUp} onMouseOut={handleMouseUp}
         style={{ border: '5px solid #FFC107', cursor: 'crosshair', backgroundColor: 'white' }} />
-
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+        <button style={{
+          margin: '0 5px',
+          backgroundColor: '#f0f0f0',
+          border: '1px solid black'
+        }} onClick={() => setPenThickness(penThickness + 1)}>+</button>
+        <span style={{
+          width: '30px',
+          textAlign: 'center',
+          lineHeight: '30px',
+          marginTop: '5px',
+          fontSize: '20px'
+        }}>{penThickness}</span>
+        <button style={{
+          margin: '0 5px',
+          backgroundColor: '#f0f0f0',
+          border: '1px solid black'
+        }} onClick={() => setPenThickness(Math.max(1, penThickness - 1))}>-</button>
         <button style={{
           backgroundColor: 'red',
           color: 'white',
           width: '40px',
           height: '40px',
-          borderRadius: '20px', // Half of width and height to make it perfectly round
+          borderRadius: '20px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -93,7 +111,7 @@ const DrawingPage = () => {
           color: 'white',
           width: '40px',
           height: '40px',
-          borderRadius: '20px', // Half of width and height to make it perfectly round
+          borderRadius: '20px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -106,7 +124,7 @@ const DrawingPage = () => {
           color: 'white',
           width: '40px',
           height: '40px',
-          borderRadius: '20px', // Half of width and height to make it perfectly round
+          borderRadius: '20px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -114,15 +132,16 @@ const DrawingPage = () => {
           cursor: 'pointer',
           margin: '0 5px'
         }} onClick={() => handleColorChange('black')}>Black</button>
-        <button style={{ margin: '0 5px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => handleColorChange('white')}>
-          <img src="assets/eraser.png" alt="Home" style={{ width: '30px', height: '30px' }} />
-
+      </div>
+      <div>
+        <button style={{ margin: '0 10px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => handleColorChange('white')}>
+          <img src="assets/eraser.png" alt="Eraser" style={{ width: '30px', height: '30px' }} />
         </button>
-        <button style={{ margin: '0 5px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={handleClear}>
-          <img src="assets/trash.png" alt="Home" style={{ width: '40px', height: '40px' }} />
+        <button style={{ margin: '0 10px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={handleClear}>
+          <img src="assets/trash.png" alt="Clear" style={{ width: '40px', height: '40px' }} />
         </button>
-        <button style={{ margin: '0 5px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={handleSave}>
-          <img src="assets/save.png" alt="Home" style={{ width: '30px', height: '30px' }} />
+        <button style={{ margin: '0 10px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={handleSave}>
+          <img src="assets/save.png" alt="Save" style={{ width: '30px', height: '30px' }} />
         </button>
       </div>
     </div>
