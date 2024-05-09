@@ -93,7 +93,7 @@ const DrawingPage = () => {
           backgroundColor: '#f0f0f0',
           border: '1px solid black'
         }} onClick={() => setPenThickness(Math.max(1, penThickness - 1))}>-</button>
-        <button style={{
+        {/* <button style={{
           backgroundColor: 'red',
           color: 'white',
           width: '40px',
@@ -131,7 +131,25 @@ const DrawingPage = () => {
           border: 'none',
           cursor: 'pointer',
           margin: '0 5px'
-        }} onClick={() => handleColorChange('black')}>Black</button>
+        }} onClick={() => handleColorChange('black')}>Black</button> */}
+        {['black','red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'].map((rainbowColor) => (
+          <button key={rainbowColor} style={{
+            backgroundColor: rainbowColor,
+            color: 'white',
+            width: '40px',
+            height: '40px',
+            borderRadius: '20px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            border: 'none',
+            cursor: 'pointer',
+            margin: '0 5px'
+          }} onClick={() => handleColorChange(rainbowColor)}>
+            {rainbowColor[0].toUpperCase()}
+          </button>
+        ))}
+
       </div>
       <div>
         <button style={{ margin: '0 10px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => handleColorChange('white')}>
