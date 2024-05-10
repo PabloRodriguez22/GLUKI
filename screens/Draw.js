@@ -76,7 +76,7 @@ const DrawingPage = () => {
         onMouseDown={handleMouseDown} onMouseMove={draw} onMouseUp={handleMouseUp} onMouseOut={handleMouseUp}
         style={{ border: '5px solid #FFC107', cursor: 'crosshair', backgroundColor: 'white' }} />
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-        <button style={{
+        {/* <button style={{
           margin: '0 5px',
           backgroundColor: '#f0f0f0',
           border: '1px solid black'
@@ -92,7 +92,7 @@ const DrawingPage = () => {
           margin: '0 5px',
           backgroundColor: '#f0f0f0',
           border: '1px solid black'
-        }} onClick={() => setPenThickness(Math.max(1, penThickness - 1))}>-</button>
+        }} onClick={() => setPenThickness(Math.max(1, penThickness - 1))}>-</button> */}
         {/* <button style={{
           backgroundColor: 'red',
           color: 'white',
@@ -152,6 +152,27 @@ const DrawingPage = () => {
 
       </div>
       <div>
+      <button style={{
+          margin: '0 10px',
+          width: '30px',
+            height: '20px',
+          backgroundColor: '#f0f0f0',
+          border: '1px solid black'
+        }} onClick={() => setPenThickness(penThickness + 1)}>+</button>
+        <span style={{
+          width: '30px',
+          textAlign: 'center',
+          lineHeight: '30px',
+          marginTop: '5px',
+          fontSize: '20px'
+        }}>{penThickness}</span>
+        <button style={{
+          margin: '0 10px',
+          width: '30px',
+            height: '20px',
+          backgroundColor: '#f0f0f0',
+          border: '1px solid black'
+        }} onClick={() => setPenThickness(Math.max(1, penThickness - 1))}>-</button>
         <button style={{ margin: '0 10px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => handleColorChange('white')}>
           <img src="assets/eraser.png" alt="Eraser" style={{ width: '30px', height: '30px' }} />
         </button>
