@@ -64,8 +64,10 @@ const DrawingPage = () => {
       </div>
       <h1 style={{
         backgroundColor: '#FFC107',
+  
         color: 'black', 
         width: '90%', 
+        fontSize: '6vw',
         textAlign: 'center',
         padding: '10px 20px',
         borderRadius: '20px', 
