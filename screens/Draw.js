@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import './font.css'; 
 
 const DrawingPage = () => {
   const [color, setColor] = useState('black');
@@ -59,15 +60,15 @@ const DrawingPage = () => {
           <img src="Gluki.png" alt="Home" style={{ width: '50px', height: '50px' }} />
         </button>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <span>Level: 1 | Score: 1000</span>
+        <img src="assets/levelNscore.png" alt="levelNscore" style={{ width: '120px', height: '50px' }} />
         </div>
       </div>
-      <h1 style={{
+      <h1 className="just-another-hand" style={{
         backgroundColor: '#FFC107',
   
         color: 'black', 
         width: '90%', 
-        fontSize: '6vw',
+        fontSize: '10vw',
         textAlign: 'center',
         padding: '10px 20px',
         borderRadius: '20px', 
@@ -178,7 +179,7 @@ const DrawingPage = () => {
         <button style={{ margin: '0 10px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => handleColorChange('white')}>
           <img src="assets/eraser.png" alt="Eraser" style={{ width: '30px', height: '30px' }} />
         </button>
-        <button style={{ margin: '0 10px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={handleClear}>
+        <button style={{ margin: '0 10px',marginTop: '30px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={handleClear}>
           <img src="assets/trash.png" alt="Clear" style={{ width: '40px', height: '40px' }} />
         </button>
         <button style={{ margin: '0 10px', background: 'none', border: 'none', cursor: 'pointer' }} onClick={handleSave}>
