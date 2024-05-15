@@ -18,8 +18,9 @@ const AlbumPage = () => {
       <header className="album-header">
         <div className="inner-header">
           <div className="home-button">
-            <img src="/Gluki.png" alt="Home" style={{ width: '50px', height: '50px' }} />
-          </div>
+          <button onClick={() => alert('Home')} style={{ background: 'none', border: 'none' }}>
+          <img src="Gluki.png" alt="Home" style={{ width: '50px', height: '50px' }} />
+        </button>          </div>
           <div className="score">
             <img src="/assets/levelNscore.png" alt="levelNscore" style={{ width: '120px', height: '50px' }} />
           </div>
@@ -34,13 +35,13 @@ const AlbumPage = () => {
           borderRadius: '20px',
           margin: '20px auto',
           boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
-        }}>T1D & Me</h1>
+        }}>T1D  &  Me</h1>
       </header>
 
       <div className="image-grid">
         {images.map((image, index) => (
           <div key={index} className="image-item">
-            <img src={`assets/AlbumPhoto/${image}`} alt={`Album ${index + 1}`} />
+            <img src={`assets/AlbumPhoto/${image}`} alt={`Album ${index + 1}`}  className='album-image'/>
           </div>
         ))}
       </div>
