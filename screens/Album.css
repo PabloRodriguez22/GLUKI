@@ -1,0 +1,86 @@
+.album-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e0f7fa;
+    height: 100vh;
+  }
+  
+  .album-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #81d4fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inner-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .home-button img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .album-header h1 {
+    font-family: 'JustAnotherHand', sans-serif; /* Ensure your font is properly loaded */
+    font-size: 2em;
+    color: #004d40;
+  }
+  
+  .score {
+    display: flex;
+    align-items: center;
+  }
+  
+  .score img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .score span {
+    font-size: 1.5em;
+    margin-left: 10px;
+    color: #004d40;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+  
+  .image-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .album-footer {
+    width: 100%;
+    background-color: #81d4fa;
+    height: 20px;
+    padding: 5px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .footer-content {
+    font-size: 1em;
+    color: #004d40;
+  }
+  

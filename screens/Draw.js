@@ -47,6 +47,7 @@ const DrawingPage = () => {
   const handleSave = () => {
     const canvas = canvasRef.current;
     const image = canvas.toDataURL("image/png");
+    
     const link = document.createElement('a');
     link.download = 'my-drawing.png';
     link.href = image;

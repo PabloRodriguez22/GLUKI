@@ -1,70 +1,57 @@
-import React, { useState } from "react";
-import Masonry from "react-responsive-masonry";
+import React from 'react';
+import './Album.css';
 
 const images = [
-    "https://picsum.photos/2000/3000",
-    "https://picsum.photos/3000/3000",
-    "https://picsum.photos/2000/1500",
-    "https://picsum.photos/1000/2000",
-    "https://picsum.photos/1200/2000",
-]
+  'childrenDrawing2.jpg',
+  'childrenDrawing.webp',
+  'my-drawing.png',
+  'my-drawing (1).png',
+  'my-drawing (2).png',
+  'my-drawing (3).png',
+  'my-drawing (5).png',
+  'my-drawing (6).png',
+];
 
-const ImageGallery = () => {
+const AlbumPage = () => {
+  return (
+    <div className="album-page">
+      <header className="album-header">
+        <div className="inner-header">
+          <div className="home-button">
+            <img src="/Gluki.png" alt="Home" style={{ width: '50px', height: '50px' }} />
+          </div>
+          <div className="score">
+            <img src="/assets/levelNscore.png" alt="levelNscore" style={{ width: '120px', height: '50px' }} />
+          </div>
+        </div>
+        <h1 className="just-another-hand" style={{
+          backgroundColor: '#9DD0DD',
+          color: 'black',
+          width: '90%',
+          fontSize: '10vw',
+          textAlign: 'center',
+          padding: '10px 20px',
+          borderRadius: '20px',
+          margin: '20px auto',
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
+        }}>T1D & Me</h1>
+      </header>
 
-    const [data, setData] = useState({img: '', i:0})
+      <div className="image-grid">
+        {images.map((image, index) => (
+          <div key={index} className="image-item">
+            <img src={`assets/AlbumPhoto/${image}`} alt={`Album ${index + 1}`} />
+          </div>
+        ))}
+      </div>
 
-    const viewImage = (img, i) =>{
-        setData({img, i})
-    }
-
-    const doSomething = (action) => {
-        let i = data.i;
-        if (action === 'next') {
-            setData({img: images[i + 1], i: i + 1})
-        }
-        if (action === 'previous') {
-            setData({img: images[i - 1], i: i - 1})
-        }
-        if (!action) {
-            setData({img: '', i: 0})
-        }
-        
-    }
-    return (
-        <>
-            
-
-            {data.img &&
-                    <div style = {{
-                        width: '100%',
-                        height: '100vh',
-                        background: 'black', 
-                        position: 'fixed',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        overflow: 'hidden',
-                    }}>
-                    <button onClick = {() => doSomething()} style={{position: 'absolute', top: '10px', right: '10px'}}>X</button>
-                    <button onClick = {() => doSomething('previous')}>{"<"}</button>
-                    <img src={data.img} style={{width: 'auto', maxWidth: '90%', maxHeight: '90%'}}/>
-                    <button onClick = {() => doSomething('next')}>{">"}</button>
-                    </div>
-                }
-            <Masonry columnsCount={5} gutter="10px" style={{ paddingTop: "120px", background: "#00758f"}}>
-                {images.map((image, i) => (
-                    <img
-                        key={i}
-                        src={image}
-                        style={{width: "100%", display: "block"}}
-                        alt=""
-                        onClick={() => viewImage(image, i)}
-                    />
-                ))}
-            </Masonry>
-        </>
-            
-    );
+      <footer className="album-footer">
+        <div className="footer-content">
+          <p>© 2024 T1D & Me. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
 };
 
-export default ImageGallery;
+export default AlbumPage;
