@@ -20,23 +20,23 @@ const Home = () => {
 
             <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Glucose")}>
-                    <Image source={happyGlukiImage} style={styles.menuIcon} />
+                    <Image source={require('../assets/tracking.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Glucose tracking</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Draw")}>
-                    <Image source={happyGlukiImage} style={styles.menuIcon} />
+                    <Image source={require('../assets/drawicon.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Drawing</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Album")}>
-                    <Image source={happyGlukiImage} style={styles.menuIcon} />
+                    <Image source={require('../assets/album.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Album</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Journal")}>
-                    <Image source={happyGlukiImage} style={styles.menuIcon} />
+                    <Image source={require('../assets/notes.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Notes</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Chat")}>
-                    <Image source={happyGlukiImage} style={styles.menuIcon} />
+                    <Image source={require('../assets/chat.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Messaging App</Text>
                 </TouchableOpacity>
             </View>
