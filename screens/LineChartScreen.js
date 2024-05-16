@@ -5,10 +5,10 @@ import { captureRef } from 'react-native-view-shot';
 import * as FileSystem from 'expo-file-system'; // Import FileSystem for file operations
 import './font.css'; 
 
-const sadGlukiImage = require('./assets/sadgluki.png');
-const supermangluki = require('./assets/supermangluki.png');
-const happyGlukiImage = require('./assets/happygluki.png');
-const levelNscore = require('./assets/levelNscore.png');
+const sadGlukiImage = require('../assets/sadgluki.png');
+const supermangluki = require('../assets/supermangluki.png');
+const happyGlukiImage = require('../assets/happygluki.png');
+const levelNscore = require('../assets/levelNscore.png');
 
 const LineChartScreen = ({ data, onClearData }) => {
   const chartRef = useRef(); // Create a ref for the chart component

@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 export default {
   "expo": {
+    "entryPoint" : "./screens/Signup",
     "name": "ChatApp",
     "slug": "ChatApp",
     "version": "1.0.0",

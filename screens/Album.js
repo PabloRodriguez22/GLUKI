@@ -1,5 +1,7 @@
 import React from 'react';
 import './Album.css';
+const happyGlukiImage = require('../assets/happygluki.png');
+import { useNavigation } from '@react-navigation/native';
 
 const images = [
   'childrenDrawing2.jpg',
@@ -13,6 +15,7 @@ const images = [
 ];
 
 const AlbumPage = () => {
+  const navigation = useNavigation();
   return (
     <div className="album-page">
       <header className="album-header">

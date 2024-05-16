@@ -6,13 +6,6 @@ import './font.css';
 import { useFonts } from 'expo-font';
 
 const App = () => {
-  let [fontsLoaded] = useFonts({
-    'JustAnotherHand': require('./assets/JustAnotherHand-Regular.ttf'),
-  });
-
-  if (!fontsLoaded){
-    return <AppLoading/>
-  }
 
   const [sugarData, setSugarData] = useState([]);
 
