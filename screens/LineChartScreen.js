@@ -52,7 +52,9 @@ const LineChartScreen = ({ data, onClearData }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={supermangluki} style={styles.image} />
+        <button onClick={() => navigation.navigate('Home')} style={{ background: 'none', border: 'none' }}>
+          <Image source={supermangluki} style={styles.image} />
+        </button>
         <Image source={levelNscore} style={styles.pointsImage} /> 
       </View>
       <View style={styles.titleContainer}>

@@ -57,7 +57,7 @@ const DrawingPage = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#FFFDE7', height: '100vh' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', padding: '10px' }}>
-        <button onClick={() => alert('Home')} style={{ background: 'none', border: 'none' }}>
+        <button onClick={() => navigation.navigate('Home')} style={{ background: 'none', border: 'none' }}>
           <img src="Gluki.png" alt="Home" style={{ width: '50px', height: '50px' }} />
         </button>
         <div style={{ display: 'flex', alignItems: 'center' }}>

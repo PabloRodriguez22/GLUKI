@@ -31,7 +31,7 @@ const Home = () => {
                     <Image source={happyGlukiImage} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Album</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem} onPress={() => alert('GLUKI News')}>
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Journal")}>
                     <Image source={happyGlukiImage} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Notes</Text>
                 </TouchableOpacity>
@@ -48,12 +48,6 @@ const Home = () => {
                 <Text style={styles.profileText}>Profile & Settings</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-                onPress={() => alert('Chat')}
-                style={styles.chatButton}
-            >
-                <Entypo name="chat" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
         </View>
     );
 };

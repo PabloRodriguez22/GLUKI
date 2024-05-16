@@ -10,7 +10,8 @@ import Chat from './screens/Chat';
 import Home from './screens/Home';
 import Draw from './screens/Draw';
 import Album from './screens/Album';
-import Glucose from './screens/MainGlucosePage'
+import Glucose from './screens/MainGlucosePage';
+import Journal from './screens/journal'
 
 const Stack = createStackNavigator();
 const AuthenticatedUserContext = createContext({});
@@ -27,11 +28,12 @@ return (
 function ChatStack() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name='Home' component={Home} />
-      <Stack.Screen name='Chat' component={Chat} />
+      <Stack.Screen name ='Home' component={Home} />
+      <Stack.Screen name ='Chat' component={Chat} />
       <Stack.Screen name = 'Draw' component={Draw} />
       <Stack.Screen name = 'Glucose' component={Glucose} />
       <Stack.Screen name = 'Album' component={Album} />
+      <Stack.Screen name = 'Journal' component={Journal} />
     </Stack.Navigator>
   );
 }

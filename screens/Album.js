@@ -21,9 +21,9 @@ const AlbumPage = () => {
       <header className="album-header">
         <div className="inner-header">
           <div className="home-button">
-          <button onClick={() => alert('Home')} style={{ background: 'none', border: 'none' }}>
+          <button onClick={() => navigation.navigate('Home')} style={{ background: 'none', border: 'none' }}>
           <img src="Gluki.png" alt="Home" style={{ width: '50px', height: '50px' }} />
-        </button>          </div>
+          </button>          </div>
           <div className="score">
             <img src="/assets/levelNscore.png" alt="levelNscore" style={{ width: '120px', height: '50px' }} />
           </div>
