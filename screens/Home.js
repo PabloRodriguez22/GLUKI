@@ -14,7 +14,6 @@ const Home = () => {
                 <Image source={happyGlukiImage} style={styles.character} />
                 <View style={styles.scoreContainer}>
                     <Image source={levelNscore} style={styles.star} />
-                    <Text style={styles.score}>1000</Text>
                 </View>
             </View>
 
@@ -78,8 +77,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     star: {
-        width: 24,
-        height: 24,
+        width: 120,
+        height: 50,
         marginRight: 5,
     },
     score: {
