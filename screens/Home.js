@@ -1,7 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
-import colors from '../colors';
+import { View, TouchableOpacity, Text, Image, StyleSheet, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 const happyGlukiImage = require('../assets/happygluki.png');
 const levelNscore = require('../assets/levelNscore.png');
@@ -11,43 +9,51 @@ const Home = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Image source={happyGlukiImage} style={styles.character} />
-                <View style={styles.scoreContainer}>
+                {/* Container for happyGlukiImage */}
+                <View style={styles.characterContainer}>
+                    <Image source={happyGlukiImage} style={styles.character} />
+                </View>
+                {/* Score */}
+            <View style={styles.scoreContainer}>
+                {/* Absolute positioning for the score */}
+                <View style={styles.scoreAbsolute}>
                     <Image source={levelNscore} style={styles.star} />
                 </View>
             </View>
-
-            <View style={styles.menu}>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Glucose")}>
-                    <Image source={require('../assets/tracking.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Glucose tracking</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Draw")}>
-                    <Image source={require('../assets/drawicon.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Drawing</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Album")}>
-                    <Image source={require('../assets/album.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Album</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Journal")}>
-                    <Image source={require('../assets/notes.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Notes</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Chat")}>
-                    <Image source={require('../assets/chat.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Messaging App</Text>
-                </TouchableOpacity>
-            </View>
-
-            <TouchableOpacity
-                onPress={() => alert('Profile & Settings')}
-                style={styles.profileButton}
-            >
-                <Text style={styles.profileText}>Profile & Settings</Text>
-            </TouchableOpacity>
-
         </View>
+        <View style={styles.menu}>
+            <View style={styles.row}>
+            <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Glucose")}>
+                <Image source={require('../assets/tracking.png')} style={styles.menuIcon} />
+                <Text style={styles.menuText}>Glucose Tracking</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Draw")}>
+                <Image source={require('../assets/drawicon.png')} style={styles.menuIcon} />
+                <Text style={styles.menuText}>Drawing</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.row}>
+            <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Album")}>
+                <Image source={require('../assets/album.png')} style={styles.menuIcon} />
+                <Text style={styles.menuText}>Album</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Journal")}>
+                <Image source={require('../assets/notes.png')} style={styles.menuIcon} />
+                <Text style={styles.menuText}>Notes</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.singleRow}>
+            <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Chat")}>
+                <Image source={require('../assets/chat.png')} style={styles.menuIcon} />
+                <Text style={styles.menuText}>My T1D Friends</Text>
+            </TouchableOpacity>
+        </View>
+        </View>
+            {/* <TouchableOpacity onPress={() => alert('Profile & Settings')} style={styles.profileButton}>
+                <Text style={styles.profileText}>Profile & Settings</Text>
+            </TouchableOpacity> */}
+        </View>
+            
     );
 };
 
@@ -56,88 +62,92 @@ export default Home;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#f0f8ff",
+        backgroundColor: "#62c4df",
         alignItems: 'center',
-        padding: 20,
+        justifyContent: 'center',
     },
     header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '100%',
-        padding: 10,
-        backgroundColor: '#9dd0dd',
-        alignItems: 'center',
+        flexDirection: 'row', // Make header items align horizontally
+        alignItems: 'center', // Center items vertically
+        justifyContent: 'space-between', // Space items evenly along the main axis (horizontally)
+        paddingHorizontal: 20, // Add padding for better spacing
+        width: '100%', // Ensure the header takes full width
     },
     character: {
-        width: 50,
-        height: 50,
+        width: 100,
+        height: 100,
     },
     scoreContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        // No need for absolute positioning, elements will be placed in a row
     },
     star: {
         width: 120,
         height: 50,
-        marginRight: 5,
-    },
-    score: {
-        fontSize: 20,
-        fontWeight: 'bold',
     },
     menu: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+        width: '80%',
         justifyContent: 'center',
+        alignItems: 'center',
         marginTop: 20,
+        marginBottom: 40,
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
         width: '100%',
+        marginBottom: 20,
+    },
+    singleRow: {
+        justifyContent: 'center',
+        width: '100%',
+        marginBottom: 20,
+        alignItems: 'center',
     },
     menuItem: {
-        width: '45%',
+        width: 160,
+        height: 160,
         margin: 10,
-        padding: 20,
-        backgroundColor: 'white',
-        borderRadius: 10,
+        backgroundColor: '#ffd942',
+        borderRadius: 70,
         alignItems: 'center',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        justifyContent: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 5,
     },
     menuIcon: {
-        width: 40,
-        height: 40,
+        width: 60,
+        height: 60,
+        alignItems: 'center',
     },
+
     menuText: {
-        marginTop: 10,
-        fontSize: 16,
+        marginTop: 5,
+        fontSize: 14,
         fontWeight: 'bold',
+        textAlign: 'center',
     },
     profileButton: {
-        backgroundColor: '#87ceeb',
+        backgroundColor: 'white',
         borderRadius: 10,
         padding: 10,
         marginTop: 20,
+        position: 'absolute',
+        bottom: 20,
     },
     profileText: {
         fontSize: 18,
         fontWeight: 'bold',
     },
-    chatButton: {
-        backgroundColor: colors.primary,
-        height: 50,
-        width: 50,
-        borderRadius: 25,
-        alignItems: 'center',
-        justifyContent: 'center',
-        shadowColor: colors.primary,
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.9,
-        shadowRadius: 8,
-        marginRight: 20,
-        marginBottom: 50,
-        position: 'absolute',
-        bottom: 20,
-        right: 20,
+    characterContainer: {
+        // No need for flex and justifyContent, as it's aligned by the header styles
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
+        opacity: 10,
     },
 });
